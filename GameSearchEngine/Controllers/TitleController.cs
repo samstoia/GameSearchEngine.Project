@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GameSearchEngine.Controllers
 {
-	public class GenreController: Controller
+	public class TitleController: Controller
 	{
-		[HttpGet("/genre")]
+		[HttpGet("/title")]
 		public ActionResult Index()
 		{
 		return View();
