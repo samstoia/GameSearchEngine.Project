@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc;
+using GameSearchEngine.Models;
 
 namespace GameSearchEngine.Controllers
 {
@@ -9,7 +10,8 @@ namespace GameSearchEngine.Controllers
 		[HttpGet("/title")]
 		public ActionResult Index()
 		{
-		return View();
+			List<Game> allGames = Game.GetAll();
+			return View(allGames);
 		}
 	}
 }
