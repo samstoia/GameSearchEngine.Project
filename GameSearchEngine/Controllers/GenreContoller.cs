@@ -12,8 +12,8 @@ namespace GameSearchEngine.Controllers
 		return View();
 		}
 
-		[HttpGet("/genre/{genreName}/show")]
-		public ActionResult Action()
+		[HttpGet("/genre/{genreName}")]
+		public ActionResult Show()
 		{
 		return View();
 		}
