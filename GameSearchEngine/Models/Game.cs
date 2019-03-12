@@ -10,7 +10,7 @@ namespace GameSearchEngine
         public string _description;
         public string _genre;
         public string _platforms;
-        plublic string _year_released;
+        public string _year_released;
         public int _rating;
         public string _image_large;
         public string _thumbnail_image;
