@@ -171,6 +171,66 @@ namespace GameSearchEngine.Models
             return selectedGames;
         }
 
+        public static List<Game> GetYearSearch(int yearStart, int yearEnd)
+        {
+            List<Game> selectedGames = new List<Game> { };
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM games WHERE year_released BETWEEN '" + yearStart + "' AND '" + yearEnd + "' ORDER BY games.year_released;";
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                int GameId = rdr.GetInt32(0);
+                string GameTitle = rdr.GetString(1);
+                string GameDescription = rdr.GetString(2);
+                string GameGenre = rdr.GetString(3);
+                string GamePlatforms = rdr.GetString(4);
+                string GameYear = rdr.GetString(5);
+                int GameRating = rdr.GetInt32(6);
+                string GameImage = rdr.GetString(7);
+                string GameThumb = rdr.GetString(8);
+                Game selectedGame = new Game(GameTitle, GameDescription, GameGenre, GamePlatforms, GameYear, GameRating, GameImage, GameThumb, GameId);
+                selectedGames.Add(selectedGame);
+            }
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return selectedGames;
+        }
+
+        public static List<Game> GetYearOrdered()
+        {
+            List<Game> selectedGames = new List<Game> { };
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM games WHERE year_released ORDER BY games.year_released;";
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                int GameId = rdr.GetInt32(0);
+                string GameTitle = rdr.GetString(1);
+                string GameDescription = rdr.GetString(2);
+                string GameGenre = rdr.GetString(3);
+                string GamePlatforms = rdr.GetString(4);
+                string GameYear = rdr.GetString(5);
+                int GameRating = rdr.GetInt32(6);
+                string GameImage = rdr.GetString(7);
+                string GameThumb = rdr.GetString(8);
+                Game selectedGame = new Game(GameTitle, GameDescription, GameGenre, GamePlatforms, GameYear, GameRating, GameImage, GameThumb, GameId);
+                selectedGames.Add(selectedGame);
+            }
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return selectedGames;
+        }
+
 
         // WORKING SQL SEARCH
         //SELECT * FROM games WHERE (platforms = 'Xbox One') OR (genre = 'Strategy/Tactics') AND (title LIKE '%Halo%');

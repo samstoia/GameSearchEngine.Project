@@ -1,0 +1,13 @@
+@using GameSearchEngine.Models;
+
+@{
+    Layout = "_Layout";
+}
+<div class="page-body">
+<h1>@Model["selectedGame"].GetTitle()</h1>
+<img height="500px" width="500px" src='@Model["selectedGame"].GetImage()'>
+    <h3>@Model["selectedGame"].GetDescription()</h3>
+    <h3>Platform(s) availabilty: @Model["selectedGame"].GetPlatforms()</h3>
+    <h3>Year Released: @Model["selectedGame"].GetYear()</h3>
+    <h3>Moby Rating: @Model["selectedGame"].GetRating()/5</h3>
+</div>

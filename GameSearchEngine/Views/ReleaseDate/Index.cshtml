@@ -1,7 +1,19 @@
+@using GameSearchEngine.Models;
+
 @{
     Layout = "_Layout";
 }
-<div>
+<div class="page-body">
     <h1>List of games by release date:</h1>
+    
+    <ul>
+    @foreach (var game in Model)
+    {
+        <img height="30px" width="30px" src='@game.GetThumb()'>
+        <li><a href='/releasedate/@game.GetId()'>@game.GetYear() - @game.GetTitle() </a></li>
+    }
+    </ul>
+
+<h4><a href="/">Return home</a></h4>
 
 </div>
