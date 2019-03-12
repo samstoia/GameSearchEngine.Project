@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System;
 
-namespace GameSearchEngine
+namespace GameSearchEngine.Models
 {
     public class Game
     {
@@ -26,7 +26,7 @@ namespace GameSearchEngine
             _rating = rating;
             _image_large = imageLarge;
             _thumbnail_image = thumbnailImage;
-            _id = _id;
+            _id = id;
         }
 
         public string GetTitle()
@@ -82,8 +82,9 @@ namespace GameSearchEngine
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
             if (!rating_sort)
             {
-            cmd.CommandText = @"SELECT * FROM games;";
-            } else 
+                cmd.CommandText = @"SELECT * FROM games;";
+            }
+            else
             {
                 cmd.CommandText = @"SELECT * FROM games ORDER BY rating;";
             }
@@ -116,7 +117,7 @@ namespace GameSearchEngine
             MySqlConnection conn = DB.Connection();
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM games WHERE (platforms = '" platform  "') OR (year_released = '" + year + "') OR (genre = '" + genre + "') OR (title LIKE '%" + userInput + "%') OR (description LIKE '%" + userInput + "%');";
+            cmd.CommandText = @"SELECT * FROM games WHERE (platforms = '" + platform + "') OR (year_released = '" + year + "') OR (genre = '" + genre + "') OR (title LIKE '%" + userInput + "%') OR (description LIKE '%" + userInput + "%');";
             MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
             while (rdr.Read())
             {
@@ -130,7 +131,37 @@ namespace GameSearchEngine
                 string GameImage = rdr.GetString(7);
                 string GameThumb = rdr.GetString(8);
                 Game selectedGame = new Game(GameTitle, GameDescription, GameGenre, GamePlatforms, GameYear, GameRating, GameImage, GameThumb, GameId);
-                selectedGames.Add(newGame);
+                selectedGames.Add(selectedGame);
+            }
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return selectedGames;
+        }
+
+        public static List<Game> GetGenre(string genreName)
+        {
+            List<Game> selectedGames = new List<Game> { };
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM games WHERE (genre LIKE '%" + genreName + "%');";
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                int GameId = rdr.GetInt32(0);
+                string GameTitle = rdr.GetString(1);
+                string GameDescription = rdr.GetString(2);
+                string GameGenre = rdr.GetString(3);
+                string GamePlatforms = rdr.GetString(4);
+                string GameYear = rdr.GetString(5);
+                int GameRating = rdr.GetInt32(6);
+                string GameImage = rdr.GetString(7);
+                string GameThumb = rdr.GetString(8);
+                Game selectedGame = new Game(GameTitle, GameDescription, GameGenre, GamePlatforms, GameYear, GameRating, GameImage, GameThumb, GameId);
+                selectedGames.Add(selectedGame);
             }
             conn.Close();
             if (conn != null)
@@ -144,6 +175,46 @@ namespace GameSearchEngine
         // WORKING SQL SEARCH
         //SELECT * FROM games WHERE (platforms = 'Xbox One') OR (genre = 'Strategy/Tactics') AND (title LIKE '%Halo%');
 
+        public static Game Find(int id)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM games WHERE id = (@searchId);";
+            MySqlParameter searchId = new MySqlParameter();
+            searchId.ParameterName = "@searchId";
+            searchId.Value = id;
+            cmd.Parameters.Add(searchId);
+            var rdr = cmd.ExecuteReader() as MySqlDataReader;
+            int GameId = 0;
+            string GameTitle = "";
+            string GameDescription = "";
+            string GameGenre = "";
+            string GamePlatforms = "";
+            string GameYear = "";
+            int GameRating = 0;
+            string GameImage = "";
+            string GameThumb = "";
+            while (rdr.Read())
+            {
+                GameId = rdr.GetInt32(0);
+                GameTitle = rdr.GetString(1);
+                GameDescription = rdr.GetString(2);
+                GameGenre = rdr.GetString(3);
+                GamePlatforms = rdr.GetString(4);
+                GameYear = rdr.GetString(5);
+                GameRating = rdr.GetInt32(6);
+                GameImage = rdr.GetString(7);
+                GameThumb = rdr.GetString(8);
+            }
+            Game newGame = new Game(GameTitle, GameDescription, GameGenre, GamePlatforms, GameYear, GameRating, GameImage, GameThumb, GameId);
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return newGame;
+        }
     }
 
 }
