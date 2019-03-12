@@ -111,13 +111,15 @@ namespace GameSearchEngine.Models
             return allGames;
         }
 
-        public static List<Game> GetSelected(string userInput, string platform, string year, string genre)
+        // SELECT * FROM games WHERE (platforms LIKE '%Xbox 360%') AND (year_released BETWEEN '1990' AND '2010') AND (genre = 'Action') AND (title LIKE '%Attack on Earth%') OR (description LIKE '%Attack on Earth%');
+
+        public static List<Game> GetSelected(string userInput, string platform, string yearStart, string yearEnd, string genre)
         {
             List<Game> selectedGames = new List<Game> { };
             MySqlConnection conn = DB.Connection();
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM games WHERE (platforms = '" + platform + "') OR (year_released = '" + year + "') OR (genre = '" + genre + "') OR (title LIKE '%" + userInput + "%') OR (description LIKE '%" + userInput + "%');";
+            cmd.CommandText = @"SELECT * FROM games WHERE (platforms LIKE '%" + platform + "%') AND (year_released BETWEEN '" + yearStart + "' AND '" + yearEnd + "') AND (genre = '" + genre + "') AND (title LIKE '%" + userInput + "%') OR (description LIKE '%" + userInput + "%');";
             MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
             while (rdr.Read())
             {
@@ -170,37 +172,6 @@ namespace GameSearchEngine.Models
             }
             return selectedGames;
         }
-
-        public static List<Game> GetYearSearch(int yearStart, int yearEnd)
-        {
-            List<Game> selectedGames = new List<Game> { };
-            MySqlConnection conn = DB.Connection();
-            conn.Open();
-            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM games WHERE year_released BETWEEN '" + yearStart + "' AND '" + yearEnd + "' ORDER BY games.year_released;";
-            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-            while (rdr.Read())
-            {
-                int GameId = rdr.GetInt32(0);
-                string GameTitle = rdr.GetString(1);
-                string GameDescription = rdr.GetString(2);
-                string GameGenre = rdr.GetString(3);
-                string GamePlatforms = rdr.GetString(4);
-                string GameYear = rdr.GetString(5);
-                int GameRating = rdr.GetInt32(6);
-                string GameImage = rdr.GetString(7);
-                string GameThumb = rdr.GetString(8);
-                Game selectedGame = new Game(GameTitle, GameDescription, GameGenre, GamePlatforms, GameYear, GameRating, GameImage, GameThumb, GameId);
-                selectedGames.Add(selectedGame);
-            }
-            conn.Close();
-            if (conn != null)
-            {
-                conn.Dispose();
-            }
-            return selectedGames;
-        }
-
         public static List<Game> GetYearOrdered()
         {
             List<Game> selectedGames = new List<Game> { };

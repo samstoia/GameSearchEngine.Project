@@ -14,10 +14,11 @@ namespace GameSearchEngine.Controllers
 			return View(allGames);
 		}
 
-		[HttpGet("/search/results")]
-		public ActionResult Show()
+		[HttpPost("/search/results")]
+		public ActionResult Show(string userInput, string genre, string platform, string yearStart, string yearEnd)
 		{
-			return View();
+			List<Game> selectedGames = Game.GetSelected(userInput, genre, platform, yearStart, yearEnd);
+			return View(selectedGames);
 		}
 
 	}
