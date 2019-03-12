@@ -11,5 +11,14 @@ namespace GameSearchEngine.Controllers
 		{
 		return View();
 		}
+
+		[HttpGet("/search/results")]
+		public ActionResult Show()
+		{
+		return View();
+		}
+
 	}
+
+
 }
