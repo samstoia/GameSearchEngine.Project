@@ -9,7 +9,6 @@
     <ul>
     @foreach (var game in Model)
     {
-        <img height="30px" width="30px" src='@game.GetThumb()'>
         <li><a href='/releasedate/@game.GetId()'>@game.GetYear() - @game.GetTitle() </a></li>
     }
     </ul>
