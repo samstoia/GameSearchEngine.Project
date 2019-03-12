@@ -3,19 +3,22 @@
   <head>
     <title>GameBuster Search Engine</title>
     <link rel="stylesheet" href="~/css/layoutstyles.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
   </head>
 <body>
-<div class="sidenav">
-    <a href="">Main Search</a>
-    <a href="">Browse by Title </a>
-    <a href="">Browse by Platform </a>
-    <a href="">Browse by Release Date </a>
-    <a href="">Browse by Genre </a>
-    <a href="">Browse by Rating </a>
-    <a href="">Browse by Engine </a>
-
+  <div class="sidenav">
+      <a href="/search">Main Search</a>
+      <a href="/title">Browse by Title </a>
+      <a href="/platform">Browse by Platform </a>
+      <a href="/releasedate">Browse by Release Date </a>
+      <a href="genre">Browse by Genre </a>
+      <a href="rating">Browse by Rating </a>
+      <a href="engine">Browse by Engine </a>
+  </div>
+  <div class="page-content">
     @RenderBody();
-</div>
+  </div>
+
 
 </body>
 

@@ -1,6 +1,6 @@
 .sidenav {
     height: 100%;
-    width: 200px;
+    width: 250px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -23,3 +23,14 @@
     cursor: pointer;
     outline: none;
 }
+
+.mainpage {
+    margin-left: 260px;
+}
+
+.card img {
+    height: 100px;
+    width: 100px;
+}
+
+
