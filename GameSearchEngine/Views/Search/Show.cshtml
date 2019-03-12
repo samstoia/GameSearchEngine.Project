@@ -1,3 +1,18 @@
+@using GameSearchEngine.Models;
+
 @{
     Layout = "_Layout";
 }
+<div class="page-body">
+    <h1>Search results:</h1>
+    
+    <ul>
+    @foreach (var game in Model)
+    {
+        <li><a href='/releasedate/@game.GetId()'>@game.GetYear() - @game.GetTitle() </a></li>
+    }
+    </ul>
+
+<h4><a href="/">Return home</a></h4>
+
+</div>
