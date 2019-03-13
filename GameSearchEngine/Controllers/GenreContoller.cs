@@ -20,51 +20,15 @@ namespace GameSearchEngine.Controllers
 			return View(allGames);
 		}
 
-		// [HttpGet("/genre/adventure")]
-		// public ActionResult Adventure()
-		// {
-		// return View();
-		// }
+		[HttpGet("/genre/game/{id}")]
+		public ActionResult ShowGame(int id)
+		{
+			Dictionary<string, object> model = new Dictionary<string, object>();
+			Game selectedGame = Game.Find(id);
+			model.Add("selectedGame", selectedGame);
+			return View(model);
+		}
 
-		// [HttpGet("/genre/compilation")]
-		// public ActionResult Compilation()
-		// {
-		// return View();
-		// }
-
-		// [HttpGet("/genre/puzzle")]
-		// public ActionResult Puzzle()
-		// {
-		// return View();
-		// }
-
-		// [HttpGet("/genre/racingdriving")]
-		// public ActionResult RacingDriving()
-		// {
-		// return View();
-		// }
-		// [HttpGet("/genre/roleplaying")]
-		// public ActionResult RolePlaying()
-		// {
-		// return View();
-		// }
-		// [HttpGet("/genre/simulation")]
-		// public ActionResult Simulation()
-		// {
-		// return View();
-		// }
-
-		// [HttpGet("/genre/sports")]
-		// public ActionResult Sports()
-		// {
-		// return View();
-		// }
-
-		// [HttpGet("/genre/strategy")]
-		// public ActionResult Strategy()
-		// {
-		// return View();
-		// }
 	}
 
 
