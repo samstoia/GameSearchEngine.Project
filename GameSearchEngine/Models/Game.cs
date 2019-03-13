@@ -149,7 +149,7 @@ namespace GameSearchEngine.Models
             return allGames;
         }
 
-        // SELECT * FROM games WHERE (platforms LIKE '%Xbox 360%') AND (year_released BETWEEN '1990' AND '2010') AND (genre = 'Action') AND (title LIKE '%Attack on Earth%') OR (description LIKE '%Attack on Earth%');
+        //@"SELECT * FROM games WHERE (genre = '%" + genre + "%') AND (platforms LIKE '%" + platform + "%') AND (year_released = '%" + yearStart + "%') OR (title LIKE '%" + userInput + "%') ORDER BY games.title;";
 
         public static List<Game> GetSelected(string genre, string platform, string yearStart, string userInput)
         {
@@ -157,7 +157,38 @@ namespace GameSearchEngine.Models
             MySqlConnection conn = DB.Connection();
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM games WHERE (genre = '%" + genre + "%') AND (platforms LIKE '%" + platform + "%') AND (year_released = '%" + yearStart + "%') OR (title LIKE '%" + userInput + "%') ORDER BY games.title;";
+            if (genre == "any" && platform == "any" && yearStart == "any")
+            {
+            cmd.CommandText = @"SELECT * FROM games WHERE (title LIKE '%" + userInput + "%') ORDER BY games.title;";
+            }
+            else if (genre == "any" && platform == "any")
+            {
+                cmd.CommandText = @"SELECT * FROM games WHERE (year_released LIKE '%" + yearStart + "%') AND (title LIKE '%" + userInput + "%') ORDER BY games.title;";
+            }
+            else if (genre == "any" && yearStart == "any")
+            {
+                cmd.CommandText = @"SELECT * FROM games WHERE (platforms LIKE '%" + platform + "%') AND (title LIKE '%" + userInput + "%') ORDER BY games.title;";
+            }
+            else if (platform == "any" && yearStart == "any")
+            {
+                cmd.CommandText = @"SELECT * FROM games WHERE (genre LIKE '%" + genre + "%') AND (title LIKE '%" + userInput + "%') ORDER BY games.title;";
+            } 
+            else if (platform == "any")
+            {
+                cmd.CommandText = @"SELECT * FROM games WHERE (genre LIKE '%" + genre + "%') AND (year_released LIKE '%" + yearStart + "%') AND (title LIKE '%" + userInput + "%') ORDER BY games.title;";
+            }
+            else if (yearStart == "any")
+            {
+                cmd.CommandText = @"SELECT * FROM games WHERE (genre LIKE '%" + genre + "%') AND (platforms LIKE '%" + platform + "%') AND (title LIKE '%" + userInput + "%') ORDER BY games.title;";
+            }
+            else if (genre == "any")
+            {
+                cmd.CommandText = @"SELECT * FROM games WHERE (year_released LIKE '%" + yearStart + "%') AND (platforms LIKE '%" + platform + "%') AND (title LIKE '%" + userInput + "%') ORDER BY games.title;";
+            }
+            else
+            {
+                cmd.CommandText = @"SELECT * FROM games WHERE (genre = '%" + genre + "%') AND (platforms LIKE '%" + platform + "%') AND (year_released = '%" + yearStart + "%') AND (title LIKE '%" + userInput + "%') ORDER BY games.title;";
+            }
             MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
             while (rdr.Read())
             {
