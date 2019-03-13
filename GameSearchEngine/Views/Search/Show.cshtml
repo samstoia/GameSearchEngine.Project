@@ -6,20 +6,33 @@
 
 <div class="page-body">
     <div class="scrollable">
+
     @if (@Model.Count == 0)
     {
         <h1 class="center marginCenter">Your search returned no results!</h1>
         <h2 class="center"><a href="/search">Back to home page</a></h2>
     }
-    @if (@Model.Count != 0)
-    {
-        <h1>Search results:</h1>
-        <ul>
+        @if (@Model.Count != 0)
+        {
+            <h1>Search results:</h1>
+            <div class="row vdivide">
+                <div class="col-sm-3 text-center"><h1>Title</h1></div>
+                <div class="col-sm-3 text-center"><h1>Genre</h1></div>
+                <div class="col-sm-3 text-center"><h1>Year</h1></div>
+                <div class="col-sm-3 text-center"><h1>Rating</h1></div>
+            </div>
+            <hr>
+    
         @foreach (var game in Model)
         {
-            <li><a href='/releasedate/@game.GetId()'>@game.GetYear() - @game.GetTitle() </a></li>
+            <div class="row vdivide">
+                <div class="col-sm-3 text-center"><h4>@game.GetGenre()</h4></div>
+                <div class="col-sm-3 text-center"><h4><a href='/releasedate/@game.GetId()'>@game.GetTitle()</a></h4></div>
+                <div class="col-sm-3 text-center"><h4>@game.GetYear()</h4></div>
+                <div class="col-sm-3 text-center"><h4>@game.GetRating()</h4></div>
+            </div>
+            <hr>
         }
-        </ul>
-    }
+      }
     </div>
 </div>

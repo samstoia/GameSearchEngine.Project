@@ -6,11 +6,24 @@
 
 <div class="page-body">
     <h1>@Model[0].GetGenre()</h1>
-    <ul>
+    <div class="scrollable">
+    <div class="row vdivide">
+                <div class="col-sm-3 text-center"><h1>Genre</h1></div>
+                <div class="col-sm-3 text-center"><h1>Title</h1></div>
+                <div class="col-sm-3 text-center"><h1>Year</h1></div>
+                <div class="col-sm-3 text-center"><h1>Rating</h1></div>
+            </div>
+            <hr>
+    
         @foreach (var game in Model)
         {
-            <li><a href='/genre/game/@game.GetId()'>@game.GetTitle()</a></li>
+            <div class="row vdivide">
+                <div class="col-sm-3 text-center"><h4>@game.GetGenre()</h4></div>
+                <div class="col-sm-3 text-center"><h4><a href='/releasedate/@game.GetId()'>@game.GetTitle()</a></h4></div>
+                <div class="col-sm-3 text-center"><h4>@game.GetYear()</h4></div>
+                <div class="col-sm-3 text-center"><h4>@game.GetRating()</h4></div>
+            </div>
+            <hr>
         }
-    </ul>
-    <h4><a href='/'>Back to Home Page</a></h4>
+    </div>
 </div>

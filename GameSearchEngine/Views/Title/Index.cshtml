@@ -2,15 +2,25 @@
     Layout = "_Layout";
 }
 <div class="page-body">
-    <br>
-    <h1>List of All Available Titles:</h1>
-    <br>
+    <h1>All Games in Database</h1>
     <div class="scrollable">
-        <ul>
-            @foreach (var game in Model)
-            {
-                <li><a href='game/@game.GetId()'>@game.GetTitle()</a></li>
-            }
-        </ul>
+        <div class="row vdivide">
+                <div class="col-sm-3 text-center"><h1>Title</h1></div>
+                <div class="col-sm-3 text-center"><h1>Year</h1></div>
+                <div class="col-sm-3 text-center"><h1>Genre</h1></div>
+                <div class="col-sm-3 text-center"><h1>Rating</h1></div>
+            </div>
+            <hr>
+    
+        @foreach (var game in Model)
+        {
+            <div class="row vdivide">
+                <div class="col-sm-3 text-center"><h4><a href='/releasedate/@game.GetId()'>@game.GetTitle()</a></h4></div>
+                <div class="col-sm-3 text-center"><h4>@game.GetYear()</h4></div>
+                <div class="col-sm-3 text-center"><h4>@game.GetGenre()</h4></div>
+                <div class="col-sm-3 text-center"><h4>@game.GetRating()</h4></div>
+            </div>
+            <hr>
+        }
     </div>
 </div>

@@ -9,16 +9,23 @@
     <form action='/AddGame' method='post'>
         <label for='title'>Game title:</label>
         <input id='title' name='title' type='text'>
+        <br>
         <label for='description'>Game Description:</label>
         <input id='description' name='description' type='text'>
+        <br>
         <label for='genre'>Game Genre:</label>
         <input id='genre' name='genre' type='text'>
+        <br>
         <label for='platforms'>What console is this game played on?</label>
         <input id='platforms' name='platforms' type='text'>
+        <br>
         <label for='yearReleased'>Release Year:</label>
         <input id='yearReleased' name='yearReleased' type='date'>
+        <br>
         <label for='rating'>Rate this game 1-5:</label>
-        <input id='rating' name='rating' type='number'>
+        <input id='rating' name='rating' type='number' max='5'>
+        <br>
         <button type='submit'>Add Game</button>
     </form>
+
 </div>
