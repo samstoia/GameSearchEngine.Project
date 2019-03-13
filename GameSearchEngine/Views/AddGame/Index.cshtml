@@ -1,9 +1,24 @@
 @using GameSearchEngine.Models;
 
-<h1>Add a game to the database:</h1>
+@{
+    Layout = "_Layout";
+}
+<div class="page-body">
+    <h1>Add a game to the database:</h1>
 
-<form action='/AddGame' method='post'>
-    <label for='title'>Game title:</label>
-    <input id='title' name='title' type='text'>
-    <label for='description'>Game Description:</label>
-</form>
+    <form action='/AddGame' method='post'>
+        <label for='title'>Game title:</label>
+        <input id='title' name='title' type='text'>
+        <label for='description'>Game Description:</label>
+        <input id='description' name='description' type='text'>
+        <label for='genre'>Game Genre:</label>
+        <input id='genre' name='genre' type='text'>
+        <label for='platforms'>What console is this game played on?</label>
+        <input id='platforms' name='platforms' type='text'>
+        <label for='yearReleased'>Release Year:</label>
+        <input id='yearReleased' name='yearReleased' type='date'>
+        <label for='rating'>Rate this game 1-5:</label>
+        <input id='rating' name='rating' type='number'>
+        <button type='submit'>Add Game</button>
+    </form>
+</div>
