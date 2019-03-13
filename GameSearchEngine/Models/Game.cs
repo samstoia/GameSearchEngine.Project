@@ -74,6 +74,11 @@ namespace GameSearchEngine.Models
             return _id;
         }
 
+        public string GetCorrectPlatform(string correctPlatform)
+        {
+            return correctPlatform;
+        }
+
         public void Save()
         {
             MySqlConnection conn = DB.Connection();

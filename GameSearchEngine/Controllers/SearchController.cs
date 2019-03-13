@@ -18,11 +18,8 @@ namespace GameSearchEngine.Controllers
 		public ActionResult Show(string genre, string platform, string yearStart, string userInput)
 		{
 			List<Game> selectedGames = Game.GetSelected(genre, platform, yearStart, userInput);
-			Console.WriteLine("{0}, {1}, {2}, {3}", genre, platform, yearStart, userInput);
 			return View(selectedGames);
 		}
-
+		
 	}
-
-
 }
