@@ -9,6 +9,7 @@
         <img height="500px" width="500px" src='@Model["selectedGame"].GetImage()'>
 
         <h3>Platform(s) availabilty: @Model["selectedGame"].GetPlatforms()</h3>
+        <h3>Genre: @Model["selectedGame"].GetGenre()
         <h3>Year Released: @Model["selectedGame"].GetYear()</h3>
         <h3>Moby Rating: @Model["selectedGame"].GetRating()/5</h3>
         <h3><a onclick="toggleFunction()"><b>Get Complete Game Description</b></a></h3>

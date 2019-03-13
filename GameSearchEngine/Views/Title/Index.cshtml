@@ -2,12 +2,15 @@
     Layout = "_Layout";
 }
 <div class="page-body">
+    <br>
     <h1>List of All Available Titles:</h1>
-    <ul>
-        @foreach (var game in Model)
-        {
-            <li><a href='game/@game.GetId()'>@game.GetTitle()</a></li>
-        }
-    </ul>
-    <h4><a href='/'>Back to Home Page</a></h4>
+    <br>
+    <div class="scrollable">
+        <ul>
+            @foreach (var game in Model)
+            {
+                <li><a href='game/@game.GetId()'>@game.GetTitle()</a></li>
+            }
+        </ul>
+    </div>
 </div>
