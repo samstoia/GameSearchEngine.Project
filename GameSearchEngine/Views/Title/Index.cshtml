@@ -6,7 +6,7 @@
     <ul>
         @foreach (var game in Model)
         {
-            <li><a href='game/@game.GetId()'>@game.GetTitle()</a></li>
+            <li><a href='/title/game/@game.GetId()'>@game.GetTitle()</a></li>
         }
     </ul>
     <h4><a href='/'>Back to Home Page</a></h4>

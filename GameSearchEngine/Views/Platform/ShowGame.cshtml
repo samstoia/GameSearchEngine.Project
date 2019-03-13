@@ -1,0 +1,30 @@
+@using GameSearchEngine.Models;
+
+@{
+    Layout = "_Layout";
+}
+<div class="page-body">
+    <div class="showpage-content">
+        <h1>@Model["selectedGame"].GetTitle()</h1>
+        <img height="500px" width="500px" src='@Model["selectedGame"].GetImage()'>
+
+        <h3>Platform(s) availabilty: @Model["selectedGame"].GetPlatforms()</h3>
+        <h3>Year Released: @Model["selectedGame"].GetYear()</h3>
+        <h3>Moby Rating: @Model["selectedGame"].GetRating()/5</h3>
+        <h3><a onclick="toggleFunction()"><b>Get Complete Game Description</b></a></h3>
+        <div id="dsc-toggle">
+            <p class="description">@Model["selectedGame"].GetDescription()</p>
+        </div>
+    </div>
+
+<script>
+function toggleFunction() {
+  var x = document.getElementById("dsc-toggle");
+  if (x.style.display && x.style.display !== 'none') {
+    x.style.display = 'none';
+} else {
+    x.style.display = 'block';
+}
+}
+</script>
+</div>
