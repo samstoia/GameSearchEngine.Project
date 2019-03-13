@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc;
+using GameSearchEngine.Models;
 
 namespace GameSearchEngine.Controllers
 {
@@ -12,10 +13,11 @@ namespace GameSearchEngine.Controllers
 		return View();
 		}
 
-		[HttpGet("/genre/{genreName}")]
-		public ActionResult Show()
+		[HttpPost("/genre/show")]
+		public ActionResult Show(string genreName)
 		{
-		return View();
+			List<Game> allGames = Game.GetGenre(genreName);
+			return View(allGames);
 		}
 
 		// [HttpGet("/genre/adventure")]
@@ -65,5 +67,5 @@ namespace GameSearchEngine.Controllers
 		// }
 	}
 
-	
+
 }
