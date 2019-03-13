@@ -10,8 +10,9 @@ namespace GameSearchEngine.Controllers
 		[HttpGet("/search")]
 		public ActionResult Index()
 		{
-			List<Game> allGames = Game.GetAll();
-			return View(allGames);
+			return View();
+			// List<Game> allGames = Game.GetAll();
+			// return View(allGames);
 		}
 
 		[HttpPost("/search/results")]
