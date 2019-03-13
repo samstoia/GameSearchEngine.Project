@@ -5,14 +5,13 @@
 }
 <div class="page-body">
     <h1>List of games by release date:</h1>
-    
-    <ul>
-    @foreach (var game in Model)
-    {
-        <li><a href='/releasedate/@game.GetId()'>@game.GetYear() - @game.GetTitle() </a></li>
-    }
-    </ul>
-
-<h4><a href="/">Return home</a></h4>
+    <div class="scrollable">
+        <ul>
+        @foreach (var game in Model)
+        {
+            <li><a href='/releasedate/@game.GetId()'>@game.GetYear() - @game.GetTitle() </a></li>
+        }
+        </ul>
+    </div>
 
 </div>
