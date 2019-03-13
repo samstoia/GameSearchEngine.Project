@@ -113,13 +113,13 @@ namespace GameSearchEngine.Models
 
         // SELECT * FROM games WHERE (platforms LIKE '%Xbox 360%') AND (year_released BETWEEN '1990' AND '2010') AND (genre = 'Action') AND (title LIKE '%Attack on Earth%') OR (description LIKE '%Attack on Earth%');
 
-        public static List<Game> GetSelected(string userInput, string platform, string yearStart, string yearEnd, string genre)
+        public static List<Game> GetSelected(string genre, string platform, string yearStart, string userInput)
         {
             List<Game> selectedGames = new List<Game> { };
             MySqlConnection conn = DB.Connection();
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM games WHERE (platforms LIKE '%" + platform + "%') AND (year_released BETWEEN '" + yearStart + "' AND '" + yearEnd + "') AND (genre = '" + genre + "') AND (title LIKE '%" + userInput + "%') OR (description LIKE '%" + userInput + "%');";
+            cmd.CommandText = @"SELECT * FROM games WHERE (genre = '%" + genre + "%') AND (platforms LIKE '%" + platform + "%') AND (year_released = '%" + yearStart + "%') OR (title LIKE '%" + userInput + "%') ORDER BY games.title;";
             MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
             while (rdr.Read())
             {

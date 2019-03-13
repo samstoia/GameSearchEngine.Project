@@ -15,9 +15,10 @@ namespace GameSearchEngine.Controllers
 		}
 
 		[HttpPost("/search/results")]
-		public ActionResult Show(string userInput, string genre, string platform, string yearStart, string yearEnd)
+		public ActionResult Show(string genre, string platform, string yearStart, string userInput)
 		{
-			List<Game> selectedGames = Game.GetSelected(userInput, genre, platform, yearStart, yearEnd);
+			List<Game> selectedGames = Game.GetSelected(genre, platform, yearStart, userInput);
+			Console.WriteLine("{0}, {1}, {2}, {3}", genre, platform, yearStart, userInput);
 			return View(selectedGames);
 		}
 
