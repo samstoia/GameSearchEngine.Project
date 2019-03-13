@@ -5,11 +5,25 @@
 }
 
 <div class="page-body">
-    <h1></h1>
-    <ul>
+    <h1>@Model[0].GetPlatforms()</h1>
+    <div class="scrollable">
+    <div class="row vdivide">
+                <div class="col-sm-3 text-center"><h1>Title</h1></div>
+                <div class="col-sm-3 text-center"><h1>Year</h1></div>
+                <div class="col-sm-3 text-center"><h1>Genre</h1></div>
+                <div class="col-sm-3 text-center"><h1>Rating</h1></div>
+            </div>
+            <hr>
+    
         @foreach (var game in Model)
         {
-            <li><a href='/platform/game/@game.GetId()'>@game.GetTitle()</a></li>
+            <div class="row vdivide">
+                <div class="col-sm-3 text-center"><h4><a href='/releasedate/@game.GetId()'>@game.GetTitle()</a></h4></div>
+                <div class="col-sm-3 text-center"><h4>@game.GetYear()</h4></div>
+                <div class="col-sm-3 text-center"><h4>@game.GetGenre()</h4></div>
+                <div class="col-sm-3 text-center"><h4>@game.GetRating()</h4></div>
+            </div>
+            <hr>
         }
-    </ul>
+    </div>
 </div>
