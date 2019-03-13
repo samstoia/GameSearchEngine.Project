@@ -74,6 +74,44 @@ namespace GameSearchEngine.Models
             return _id;
         }
 
+        public void Save()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO game (title, description, genre, platforms, yearReleased, rating) VALUES (@title, @description, @genre, @platforms, @yearReleased, @rating);";
+            MySqlParameter title = new MySqlParameter();
+            MySqlParameter description = new MySqlParameter();
+            MySqlParameter genre = new MySqlParameter();
+            MySqlParameter platforms = new MySqlParameter();
+            MySqlParameter yearReleased = new MySqlParameter();
+            MySqlParameter rating = new MySqlParameter();
+            title.ParameterName = "@title";
+            title.Value = this.GetTitle();
+            description.ParameterName = "@description";
+            description.Value = this.GetDescription();
+            genre.ParameterName = "@genre";
+            genre.Value = this.GetGenre();
+            platforms.ParameterName = "@platforms";
+            platforms.Value = this.GetPlatforms();
+            yearReleased.ParameterName = "@yearReleased";
+            yearReleased.Value = this.GetYear();
+            rating.ParameterName = "@rating";
+            rating.Value = this.GetRating();
+            cmd.Parameters.Add(title);
+            cmd.Parameters.Add(description);
+            cmd.Parameters.Add(genre);
+            cmd.Parameters.Add(platforms);
+            cmd.Parameters.Add(yearReleased);
+            cmd.Parameters.Add(rating);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
         public static List<Game> GetAll(bool rating_sort = false)
         {
             List<Game> allGames = new List<Game> { };
