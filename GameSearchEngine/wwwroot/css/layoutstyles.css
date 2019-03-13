@@ -1,3 +1,14 @@
+.page-top {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#non-link {
+    pointer-events: none;
+    cursor: default;
+  }
+
 .sidenav {
     height: 100%;
     width: 200px;
@@ -5,7 +16,6 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -22,12 +32,13 @@
     text-align: left;
     cursor: pointer;
     outline: none;
+    font-weight: bold;
 }
 
 
-.page-body {
+/* .page-body {
     margin-left: 260px;
-}
+} */
 
 .card-img img {
     width: 100%;
@@ -141,3 +152,9 @@ a:hover {
 }
 
 /*end carousel */
+
+/*sidebar */
+
+
+
+
