@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc;
+using GameSearchEngine.Models;
 
 namespace GameSearchEngine.Controllers
 {
@@ -11,12 +12,12 @@ namespace GameSearchEngine.Controllers
 		{
 		return View();
 		}
-	
 
-		[HttpGet("/platform/{platformName}")]
-		public ActionResult Show()
+		[HttpPost("/platform/show")]
+		public ActionResult Show(string platformName)
 		{
-		return View();
+			List<Game> allGames = Game.GetPlatform(platformName);
+			return View(allGames);
 		}
 	}
 }
