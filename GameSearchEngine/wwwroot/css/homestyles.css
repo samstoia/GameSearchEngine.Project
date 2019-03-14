@@ -21,6 +21,11 @@ body, html {
     text-transform: capitalize;
   }
 
+  
+  .hero-text h1:hover, p:hover{
+    text-decoration: underline;
+  }
+
   .hero-text h1, p{
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
