@@ -22,6 +22,5 @@ namespace GameSearchEngine.Controllers
 			model.Add("selectedGame", selectedGame);
 			return View(model);
 		}
-
 	}
 }
