@@ -13,12 +13,12 @@ namespace GameSearchEngine.Controllers
 			return View();
 		}
 
-		[HttpPost("/addgame")]
-		public ActionResult Create(string title, string description, string genre, string platforms, string yearReleased, int rating, string imageLarge = "", string thumbnailImage = "")
+		[HttpPost("/addgame/thank-you")]
+		public ActionResult Thanks(string title, string description, string genre, string platforms, string yearReleased, int rating, string imageLarge = "", string thumbnailImage = "")
 		{
 			Game newGame = new Game(title, description, genre, platforms, yearReleased, rating, imageLarge, thumbnailImage);
 			newGame.Save();
-			return RedirectToAction("Index");
+			return View();
 		}
 	}
 }
