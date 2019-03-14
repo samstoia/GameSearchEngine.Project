@@ -1,5 +1,17 @@
+span h3 {
+    cursor: pointer;
+}
+
+.page-top h1 {
+    font-size: 70px;
+}
+
 #dsc-toggle {
     display: none;
+}
+
+.background-color {
+    background-color: #f5f5fd;
 }
 
 .table-column {
@@ -68,7 +80,7 @@ span h3 {
 
 .content  {
     margin:auto;
-    margin-top: 200px;
+    margin-top: 70px;
     width:190px;
     perspective: 1000px;
     position: relative;
@@ -163,8 +175,6 @@ a:hover {
 }
 
 /*end carousel */
-
-/*sidebar */
 
 .threeD {
     color: rgb(0, 0, 0);
