@@ -30,8 +30,16 @@ span h3 {
 
 .background-color {
     background-color: #ACBEE3;
+    background-image: url(../img/gamey.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
 }
 
+.black {
+    color: black;
+    text-decoration: underline;
+}
 .table-column {
     position: static;
 }
@@ -231,7 +239,7 @@ a:hover {
     background: linear-gradient(rgb(156, 196, 238), #C1DFFF);
 }
 
-#big {
+.big {
     font-size: 100px;
     color: #092B6E;
 }
