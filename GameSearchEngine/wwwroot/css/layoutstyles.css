@@ -29,7 +29,7 @@ span h3 {
 }
 
 .background-color {
-    background-color: #f5f5fd;
+    background-color: #ACBEE3;
 }
 
 .table-column {
@@ -221,4 +221,21 @@ a:hover {
 
 .marginCenter {
     margin-top: 20%;
+}
+
+.btn-lg {
+    padding: 30px 20px;
+    font-size: 18px;
+    line-height: 0;
+    border-radius: 6px;
+    background: linear-gradient(rgb(156, 196, 238), #C1DFFF);
+}
+
+#big {
+    font-size: 100px;
+    color: #092B6E;
+}
+
+#blue {
+    color: #092B6E;
 }
