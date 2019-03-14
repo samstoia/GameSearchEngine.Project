@@ -15,7 +15,7 @@
         @foreach (var game in Model)
         {
             <div class="row vdivide">
-                <div class="col-sm-3 text-center"><h4><a href='/releasedate/@game.GetId()'>@game.GetTitle()</a></h4></div>
+                <div class="col-sm-3 text-center"><h4><a class="black" href='/releasedate/@game.GetId()'>@game.GetTitle()</a></h4></div>
                 <div class="col-sm-3 text-center"><h4>@game.GetYear()</h4></div>
                 <div class="col-sm-3 text-center"><h4>@game.GetGenre()</h4></div>
                 <div class="col-sm-3 text-center"><h4>@game.GetRating()</h4></div>
