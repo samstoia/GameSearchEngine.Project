@@ -185,7 +185,7 @@ namespace GameSearchEngine.Models
             else if (platform == "any" && yearStart == "any")
             {
                 cmd.CommandText = @"SELECT * FROM games WHERE (genre LIKE '%" + genre + "%') AND (title LIKE '%" + userInput + "%') ORDER BY games.title;";
-            } 
+            }
             else if (platform == "any")
             {
                 cmd.CommandText = @"SELECT * FROM games WHERE (genre LIKE '%" + genre + "%') AND (year_released LIKE '%" + yearStart + "%') AND (title LIKE '%" + userInput + "%') ORDER BY games.title;";
@@ -388,6 +388,20 @@ namespace GameSearchEngine.Models
                 conn.Dispose();
             }
             return newGame;
+        }
+
+        public static void ClearAll()
+        {
+          MySqlConnection conn = DB.Connection();
+          conn.Open();
+          var cmd = conn.CreateCommand() as MySqlCommand;
+          cmd.CommandText = @"DELETE FROM games;";
+          cmd.ExecuteNonQuery();
+          conn.Close();
+          if (conn != null)
+          {
+           conn.Dispose();
+          }
         }
     }
 
