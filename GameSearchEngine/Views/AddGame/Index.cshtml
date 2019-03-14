@@ -5,39 +5,37 @@
 }
 <div class="page-body">
     <h1>Add a game to the database:</h1>
+    <div class="addform">
+        <form action='/addgame/thank-you' method='post'>
+            <div class="form-group">
+                <label for="title">Game Title</label>
+                <input type="text" class="form-control" name="title" id="title" placeholder="Title" required>
+            </div>
+            <div class="form-group">
+                <label for="genre">Game Genre</label>
+                <input type="text" class="form-control" name="genre" id="genre" placeholder="Genre" required>
+            </div>
 
-    <form action='/addgame/thank-you' method='post'>
-    <div class="form-group">
-        <label for="title">Game Title</label>
-        <input type="text" class="form-control" name="title" id="title" placeholder="Title" required>
-    </div>
-    <div class="form-group">
-        <label for="genre">Game Genre</label>
-        <input type="text" class="form-control" name="genre" id="genre" placeholder="Genre" required>
-    </div>
+            <div class="form-group">
+                <label for="platforms">Game console is game played on?</label>
+                <input type="text" class="form-control" name="platforms" id="platforms" placeholder="Console" required>
+            </div>
 
-    <div class="form-group">
-        <label for="platforms">Game console is game played on?</label>
-        <input type="text" class="form-control" name="platforms" id="platforms" placeholder="Console" required>
+            <div class="form-group">
+                <label for="yearReleased">Release Year:</label>
+                <input type="text" class="form-control" name="yearReleased" id="yearReleased" placeholder="Release Year" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="rating">Rate this game:</label>
+                <input type="text" class="form-control" name="rating" id="rating" placeholder="Rating" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Game Description</label>
+                <textarea class="form-control" input type="text"  name="description" id="description" rows="3" placeholder="Detailed Game Description" required></textarea>
+            </div>
+            <button type='submit' class="hvr-float-shadow btn-lg" data-toggle="modal" data-target="#exampleModal">Add Game</button>
+        </form>
     </div>
-
-    <div class="form-group">
-        <label for="yearReleased">Release Year:</label>
-        <input type="text" class="form-control" name="yearReleased" id="yearReleased" placeholder="Release Year" required>
-    </div>
-    
-    <div class="form-group">
-        <label for="rating">Rate this game:</label>
-        <input type="text" class="form-control" name="rating" id="rating" placeholder="Rating" required>
-    </div>
-    
-    <div class="form-group">
-        <label for="description">Game Description</label>
-        <textarea class="form-control" input type="text"  name="description" id="description" rows="3" required></textarea>
-    </div>
-    <button type='submit' class="hvr-float-shadow btn-lg" data-toggle="modal" data-target="#exampleModal">Add Game</button>
-    </form>
-<script>
-
-</script>
 </div>

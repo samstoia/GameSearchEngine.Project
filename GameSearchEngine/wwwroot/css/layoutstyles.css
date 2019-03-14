@@ -1,3 +1,21 @@
+#moveBottom {
+    position: fixed;
+    bottom: 0px;
+    float:right;
+}
+
+
+#side-photo {
+    height: 500px;
+    z-index:-1;
+    float:right;
+}
+
+.addform {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
 span h3 {
     cursor: pointer;
 }
